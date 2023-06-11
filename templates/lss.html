@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="text-center my-5">Department of Labour and Social Security</h3>
+        <div class="col-sm-6 my-3">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title">Work Permit</h5>
+              <p class="card-text">Apply for work permit here.</p>
+              <a href="{% url 'work_permit' %}" class="d-block btn btn-success">Apply</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 my-3">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title">Recruiter's License and Permit</h5>
+              <p class="card-text">Apply for license and permit here</p>
+              <a href="{% url 'recruiters' %}" class="d-block btn btn-success">Apply</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 my-3">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title">Emergency Work Permit</h5>
+              <p class="card-text">Apply for Emergency Work permit here</p>
+              <a href="#" class="d-block btn btn-success">Apply</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 my-3">
+          <div class="card bg-light">
+            <div class="card-body">
+              <h5 class="card-title">Work Exemption</h5>
+              <p class="card-text">Apply for Work Exemption permit here</p>
+              <a href="#" class="d-block btn btn-success">Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock content %}

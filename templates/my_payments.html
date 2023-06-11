@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h3 class="my-4 text-center">You may select the Services you want to pay</h3>
+    <div class="col-md-auto">
+      <!-- Table -->
+      <table class="table table-light table-striped my-3">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Service ID</th>
+            <th>Service</th>
+            <th>Amount</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in my_payments %}
+          <tr>
+            <td>{{ item.date }}</td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.service }}</td>
+            <td>{{ item.amount }}</td>
+            <td>
+              <input type="checkbox" class="form-check-input" data-amount="{{ item.amount }}">
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="text-end font-weight-bold"><strong>Total Amount:</strong></td>
+            <td>
+              <span class="font-weight-bold" id="totalAmount">P0.00</span>
+            </td>
+          </tr>
+          <tr>
+          </tr>
+        </tfoot>
+      </table>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // Get all the checkboxes
+          var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+          // Initialize the total amount
+          var totalAmount = 0.00;
+
+          // Add event listener to each checkbox
+          checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+              var amount = parseFloat(this.dataset.amount);
+
+              // Update the total amount based on checkbox status
+              if (this.checked) {
+                totalAmount += amount;
+              } else {
+                totalAmount -= amount;
+              }
+
+              // Update the total amount display
+              document.getElementById('totalAmount').textContent = totalAmount.toFixed(2);
+            });
+          });
+        });
+
+        function getSelectedServiceIDs() {
+          var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+          var serviceIDs = [];
+
+          checkboxes.forEach(function (checkbox) {
+            var serviceID = checkbox.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+
+            serviceIDs.push(serviceID);
+          });
+
+          return serviceIDs;
+        }
+
+      </script>
+
+
+
+      <div id="paypal-button-container"></div>
+      <script
+        src="https://www.paypal.com/sdk/js?client-id=AR2Pvs6jwTI53bZ3t65Jn5aOLkN5RmJsarMGdxXCjrudoxT6gx2eq3iQdXh7ph1ncg64xjFmyD8u0eyD&currency=USD"></script>
+      <script>
+
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+          // Set up the transaction
+          createOrder: function (data, actions) {
+            var totalAmount = document.getElementById('totalAmount').innerText;
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: totalAmount
+                }
+              }]
+            });
+          },
+          // Finalize the transaction
+   
+      onApprove: function (data, actions) {
+          return actions.order.capture().then(function (orderData) {
+            // Successful capture! For demo purposes:
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            var transaction = orderData.purchase_units[0].payments.captures[0];
+
+            // Update the payment status to "Paid" via AJAX request
+            updatePaymentStatus();
+
+            // Show a confirmation dialog
+            //   window.location.href = "{% url 'my_applications' %}"
+              // alert('your payment was successful')
+          });
+        }
+
+        }).render('#paypal-button-container');
+
+        function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+        const csrfToken = getCookie('csrftoken');
+
+        function updatePaymentStatus() {
+          var url = "{% url 'update_payment_status' %}"; // Replace with the actual URL for updating payment status
+
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=UTF-8",
+              "X-CSRFToken": csrfToken
+            },
+            body: JSON.stringify({ id: getSelectedServiceIDs() })
+          })
+        }
+      </script>
+    </div>
+  </div>
+</div>
+{% endblock content %}

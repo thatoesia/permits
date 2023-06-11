@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+    </script>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Online Permit Application</title>
+    {% endif %}
+
+    <style>    
+        .hero-image {
+            background-image: url("{% static 'img/docs.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 500px;
+        }
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+</head>
+
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" class="" alt="logo"></a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'contact_view' %}" class="nav-item nav-link">Contact Us</a>
+                <a href="{% url 'faq' %}" class="nav-item nav-link">FAQ</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Apply</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'work_permit' %}" class="dropdown-item">Work Permit</a>
+                        <a href="{% url 'recruiters' %}" class="dropdown-item">Recruiter's License and Permit</a>
+                        <a href="#" class="dropdown-item">Emergency Work Permit</a>
+                        <a href="#" class="dropdown-item">Work Exemption</a>
+                        <a href="{% url 'residence_permit' %}" class="dropdown-item">Residence Permit</a>
+                        <a href="#" class="dropdown-item">Permanent Residence</a>
+                        <a href="#" class="dropdown-item">Residence Exemption</a>
+                        <a href="#" class="dropdown-item">Citizenship</a>
+                        <a href="#" class="dropdown-item">Botswana Blue Card(Omang)</a>
+                        <a href="#" class="dropdown-item">VISA</a>                  
+                    </div>
+                </div>
+              {% if user.is_authenticated %}
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">My Account</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'my_applications' %}" class="dropdown-item">My Applications</a>
+                        <a href="{% url 'my_payments' %}" class="dropdown-item">My Payments</a>
+                    </div>
+                </div>
+              {% endif %}
+            </div>
+            <form class="d-flex">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="button" class="btn btn-secondary"><i class="bi-search"></i></button>
+                </div>
+            </form>
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="nav-item nav-link">Profile</a>
+                <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out</a>
+              {% else %}
+                <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+                <a href="{% url 'register' %}" class="nav-item nav-link">Register</a>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+</header>
+<body>
+<main role="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+<footer class="mt-4 text-white bg-dark" id="footer_fix"><!-- id="footer_fix" -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class='mt-4 text-white font-weight-bold'>Our Services</h4>
+                <p class="text-white"><i class="fa-solid fa-dash"></i>Work Permit Application</p>
+                <p class="text-white">Emergency Work Permit Application</p>
+                <p class="text-white">VISA Application</p>
+                <p class="text-white">Residence Application</p>
+                <p class="text-white">and many more services</p>
+                <script type="text/javascript">
+                    let dt = new Date();
+                    document.write("<h5 class='mb-4 text-white'> copyright &copy " + dt.getFullYear() + "</h5>");
+                </script>
+            </div>
+
+            <div class="col-md-4">
+                <h4 class="mt-4 text-white font-weight-bold"> follow us on social media </h4>
+                <div class="navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <p class="text-white hover_me"><i class="fab fa-facebook fa-1x mr-2 my-2"> </i>like us on
+                                facebook</p>
+                            <p class="text-white hover_me"><i class="fab fa-twitter fa-1x mr-2  my-2"> </i>follow us on
+                                twitter</p>
+                            <p class="text-white hover_me"><i class="fab fa-instagram fa-1x mr-2 my-2"> </i>follow us on
+                                instagram</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="mt-4 text-white font-weight-bold">Quick Links</h4>
+                <a class="nav-link text-white hover_me" href="{% url 'home' %}">home <span
+                        class="sr-only">(current)</span></a>
+                <a class="nav-link text-white hover_me" href="#">about us</a>
+                <a class="nav-link text-white hover_me" href="#">contacts</a>
+                <a class="nav-link text-white hover_me" href="#">Terms and Conditions</a>
+                <a class="nav-link text-white hover_me" href="#">FAQ</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script>
+    var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+        trigger: 'focus'
+    })
+    var myModal = new bootstrap.Modal(document.getElementById('exampleModalScrollable'), focus())
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

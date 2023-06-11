@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <div class="row justify-content-md-center">
+            <div class="col-auto">
+                <form method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <h3 class="my-4 font-weight-bold">Apply For Work Permit</h3>
+                        {{ form|crispy }}
+                        <button class="btn-block btn btn-danger" type="submit">save</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

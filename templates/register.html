@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="my-4">Create Account</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+
+                    <div class="form-group">
+                        <!-- Modal -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning my-3" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Terms and Conditions
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Permit Services |
+                                            Terms and Condition</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        By using this website or our mobile app, you understand and agree to the
+                                        following:
+
+                                        We reserve the right, at our discretion, to modify or remove portions of this
+                                        internet privacy policy at any time. This privacy policy is in addition to any
+                                        other terms and conditions applicable to the web site / mobile app. BW Government makes no representations about third party web sites that may
+                                        be linked to this web site or app.
+
+                                        This privacy policy should be reviewed regularly to ensure that you are updated
+                                        on changes made to its content.
+
+                                        BW Government
+                                        recognizes the importance of protecting your personal information.
+
+                                        BW Government defines personal / individual information as all
+                                        information specific to yourself or your device that you provide to us over the
+                                        Internet or any other channel. This includes personal data that you provide us
+                                        to obtain an online quotation, questions you ask via e-mail or your personal
+                                        policy data that you may wish to review or amend.
+
+                                        BW Government maintains the utmost regard for the privacy of all
+                                        our clients and will use collected personal data as appropriate in the normal
+                                        course of business to provide you with the products and services requested.
+                                        BW Government will also use this information to positively
+                                        identify you when you contact us online, over the phone, email or other medium.
+
+                                        BW Government does not and will not sell or provide personal
+                                        information to third parties for explicitly unauthorised use. We may, however,
+                                        share personal information with our business partners if that information is
+                                        required to provide the product or service that could be directly associated
+                                        with your insurance with us. However, our business partners will adhere to using
+                                        any information only as directed by BW Government.
+
+                                        We value the information that you choose to provide us and will, therefore, take
+                                        reasonable steps to protect your personal information from loss, misuse or
+                                        unauthorised alteration. The information we maintain concerning our customers is
+                                        stored in databases that have built-in safeguards to ensure the privacy and
+                                        confidentiality of that information.
+
+                                        BW Government uses the best technology and encryption to prevent
+                                        unauthorised access to your personal information when registering and
+                                        transacting on our Website.
+
+                                        When you use the online services or facilities provided by us, access to your
+                                        personal information or to transact on-line would require a policy or claim
+                                        number, username, and password to validate your identification and enable access
+                                        to our secure environment. You should keep this information confidential and
+                                        ensure that you do not disclose it to anyone. Therefore to ensure continuance in
+                                        preventing unauthorised access to your information we recommend that you change
+                                        your password on a monthly basis or, immediately should your password be
+                                        compromised in any way.
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" onchange="terms_changed(this)" type="checkbox" value=""
+                                   id="toggle">
+                            <label class="form-check-label" for="toggle">
+                                I Agree
+                            </label>
+                        </div>
+                        <button class="btn btn-block btn-primary my-4" id="send" type="submit" disabled>Sign Up</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //JavaScript function that enables or disables a submit button depending
+        //on whether a checkbox has been ticked or not.
+        function terms_changed(toggle) {
+            //If the checkbox has been checked
+            if (toggle.checked) {
+                //Set the disabled property to FALSE and enable the button.
+                document.getElementById("send").disabled = false;
+            } else {
+                //Otherwise, disable the submit button.
+                document.getElementById("send").disabled = true;
+            }
+        }
+    </script>
+{% endblock content %}

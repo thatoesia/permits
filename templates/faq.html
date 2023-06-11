@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row justify-content-md-center">
+<div class="col col-md-6">
+    <h4 class="my-4">FAQs</h4>
+    <p class="container">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                  <strong>How do I apply for a work permit in Botswana? </strong>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                    To apply for a work permit in Botswana, you need to submit an application to the Botswana Immigration and Labour Ministry. The application should include necessary documents such as a job offer letter, valid passport, medical certificate, and relevant fees. The ministry will review your application and determine the eligibility for a work permit.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                  <strong>What are the requirements for obtaining a residence permit in Botswana?</strong>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    To obtain a residence permit in Botswana, you must meet certain requirements, which include a valid reason for residency, such as employment, investment, or family ties. You will need to provide supporting documents, such as a valid passport, proof of employment or investment, and police clearance certificates. The Immigration and Labour Ministry will assess your application based on these requirements.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                  <strong> How long does it take to process a work permit application in Botswana?</strong>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                    The processing time for a work permit application in Botswana can vary. It generally takes several weeks to a few months for the Immigration and Labour Ministry to review and process the application. The processing time may depend on various factors, including the completeness of your application, the workload of the ministry, and any additional requirements or verifications needed.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                    <strong>Can I extend my work permit in Botswana?</strong>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                  <div class="accordion-body">
+                    Yes, it is possible to extend your work permit in Botswana. You should apply for an extension before your current work permit expires. The application process typically involves submitting the necessary documents, such as a letter from your employer, updated employment contract, and any other required supporting documents. The Immigration and Labour Ministry will assess your application for the extension.
+                  </div>
+                </div>
+              </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                  <strong>Can users view their payment history?</strong>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                    Yes, users can access their payment history within the system. They can view past transactions, check payment statuses, and download payment receipts for their records.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+                  <strong>What happens if there is an issue with a payment?
+                  </strong>
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+                <div class="accordion-body">
+                    In case of any payment-related issues, such as failed transactions or discrepancies, users can contact the customer support provided by the payment system. They will assist in resolving the problem and ensuring that payments are properly processed.
+                </div>
+              </div>
+            </div>
+          </div>
+    </p>
+</div>
+</div>
+
+{% endblock content %}

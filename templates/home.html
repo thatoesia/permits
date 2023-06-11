@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Work and Residence Permit Services</h1>
+            <p class="lead text-muted">apply for work permit or residence at your convenience online. You will be able to make payments and view the status of your applications</p>
+            <p>
+              <a href="#" class="btn btn-danger my-2">Learn More</a>
+            </p>
+          </div>
+        </div>
+      </section> -->
+<div class="container-fluid bg-light mt-2">
+  <div class="row align-items-center text-center">
+    <div class="col-md-6">
+      <h1 class="font-weight-bold">Work and Residence Permit Services</h1>
+      <p class="">apply for work permit or residence at your convenience online. You will be able to make payments and
+        view the status of your applications</p>
+      <a href="#" class="shadow btn btn-danger my-3">Apply Now</a>
+      <a href="#" class="shadow btn btn-outline-danger my-3">Learn More</a>
+    </div>
+    <div class="col-md-6">
+      <div class="hero-image "></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <h1 class="text-center my-3">Our Services</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img class="card-img-top"
+            src="https://www.worldtravelguide.net/wp-content/uploads/2017/04/Think-Botswana-MakgadikgadiNP-520443917-2630ben-Copy.jpg"
+            width="100%" height="225"></img>
+          <div class="card-body">
+            <h5 class="card-title">Department of Labour and Social Security</h5>
+            <p class="card-text">In this department, one can apply for Work Permit, Emergency Work Permit, Recruiter's
+              License and Permit and Work Exemption etc. Ts and Cs apply</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a class="btn btn-danger" href="{% url 'lss_home' %}">Apply</a>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Department of Labour and Social Security</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5>Overview</h5>
+              <p>The Department of Labour and Social Security in Botswana is a government department responsible for
+                formulating and implementing policies, programs, and regulations related to labor and social security
+                matters in the country. Its primary role is to promote decent work, protect workers' rights, and ensure
+                social security coverage for the population.</p>
+
+              <h5>Functions and Responsibilities</h5>
+              <ul>
+                <li>Labor Relations: Facilitating and promoting harmonious industrial relations between employers and
+                  employees.</li>
+                <li>Labor Inspection: Conducting inspections and monitoring compliance with labor laws and regulations.
+                </li>
+                <li>Employment Services: Providing job placement, career counseling, and skills development programs.
+                </li>
+                <li>Social Security: Administering social security schemes and programs for social protection.</li>
+                <li>Labor Market Information: Collecting and analyzing labor market data for policy formulation and
+                  planning.</li>
+                <li>Occupational Health and Safety: Promoting and enforcing workplace health and safety regulations.
+                </li>
+                <li>Employment Regulation for Foreign Nationals: Regulating the employment of foreign nationals in
+                  Botswana.</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img class="card-img-top"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ05PJdfPtOeVI3M77tguOtIbYqGgLZSChbvY73QVeFV6Ox9hpNMDTZltK3RBEMyx3Ry1Y&usqp=CAU"
+            width="100%" height="225"></img>
+          <div class="card-body">
+            <h5 class="card-title">Department of Immigration and Citizenship</h5>
+            <p class="card-text">In this department, one can apply for Residence Permit, Permanent Residence, Residence
+              Exemption, Citizenship, Botswana Blue Card(Omang) and VISA. Ts and Cs apply</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a class="btn btn-danger" href="{% url 'emc_home' %}">Apply</a>
+                <button type="button" class="btn btn btn-outline-danger" data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop1">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel1">Department of Immigration and Citizenship</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5>Overview</h5>
+              <p>The Department of Immigration and Citizenship is a government department responsible for managing
+                immigration and citizenship matters in the country. Its primary role is to control the entry and stay of
+                foreign nationals, enforce immigration laws, and facilitate the acquisition of citizenship for eligible
+                individuals.</p>
+
+              <h5>Functions and Responsibilities</h5>
+              <ul>
+                <li>Visa Services: Processing and issuing visas for individuals wishing to enter the country for various
+                  purposes.</li>
+                <li>Immigration Control: Enforcing immigration laws and regulations to manage the entry and stay of
+                  foreign nationals.</li>
+                <li>Border Security: Ensuring the security of the country's borders and implementing measures to prevent
+                  illegal immigration.</li>
+                <li>Passport Services: Issuing passports to citizens for international travel and managing
+                  passport-related services.</li>
+                <li>Citizenship Acquisition: Facilitating the acquisition of citizenship for eligible individuals
+                  through naturalization or other legal means.</li>
+                <li>Immigration Policies: Formulating and implementing immigration policies and regulations in alignment
+                  with national interests.</li>
+                <li>International Cooperation: Collaborating with international partners and organizations on matters
+                  related to immigration and citizenship.</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
